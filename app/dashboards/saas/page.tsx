@@ -3,20 +3,16 @@
 import React from "react";
 import { DashboardShell } from "@/components/dashboard/shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  ResponsiveContainer, 
-  LineChart, 
-  Line,
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
   AreaChart,
-  Area
+  Area,
 } from "recharts";
-import { ArrowUpRight, ArrowDownRight, Users, DollarSign, Target, Activity } from "lucide-react";
+import { Users, DollarSign, Target, Activity } from "lucide-react";
 import AgGridExample from "@/components/dashboard/ag-grid-example";
 
 const data = [
@@ -35,14 +31,40 @@ export default function SaasDashboard() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { title: "Total Revenue", value: "$45,231.89", icon: DollarSign, trend: "+20.1%", color: "text-emerald-500" },
-          { title: "Active Users", value: "+2,350", icon: Users, trend: "+180.1%", color: "text-emerald-500" },
-          { title: "Sales", value: "+12,234", icon: Target, trend: "+19%", color: "text-emerald-500" },
-          { title: "Active Now", value: "+573", icon: Activity, trend: "+201 since last hour", color: "text-emerald-500" },
+          {
+            title: "Total Revenue",
+            value: "$45,231.89",
+            icon: DollarSign,
+            trend: "+20.1%",
+            color: "text-emerald-500",
+          },
+          {
+            title: "Active Users",
+            value: "+2,350",
+            icon: Users,
+            trend: "+180.1%",
+            color: "text-emerald-500",
+          },
+          {
+            title: "Sales",
+            value: "+12,234",
+            icon: Target,
+            trend: "+19%",
+            color: "text-emerald-500",
+          },
+          {
+            title: "Active Now",
+            value: "+573",
+            icon: Activity,
+            trend: "+201 since last hour",
+            color: "text-emerald-500",
+          },
         ].map((stat, i) => (
           <Card key={i}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{stat.title}</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                {stat.title}
+              </CardTitle>
               <stat.icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -65,15 +87,37 @@ export default function SaasDashboard() {
               <AreaChart data={data}>
                 <defs>
                   <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#88888820" />
-                <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                  stroke="#88888820"
+                />
+                <XAxis
+                  dataKey="name"
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={(value) => `$${value}`}
+                />
                 <Tooltip />
-                <Area type="monotone" dataKey="revenue" stroke="#3b82f6" fillOpacity={1} fill="url(#colorRev)" />
+                <Area
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="#3b82f6"
+                  fillOpacity={1}
+                  fill="url(#colorRev)"
+                />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
@@ -86,19 +130,43 @@ export default function SaasDashboard() {
           <CardContent>
             <div className="space-y-8">
               {[
-                { name: "Olivia Martin", email: "olivia.martin@email.com", amount: "+$1,999.00" },
-                { name: "Jackson Lee", email: "jackson.lee@email.com", amount: "+$39.00" },
-                { name: "Isabella Nguyen", email: "isabella.nguyen@email.com", amount: "+$299.00" },
-                { name: "William Kim", email: "will@email.com", amount: "+$99.00" },
-                { name: "Sofia Davis", email: "sofia.davis@email.com", amount: "+$39.00" },
+                {
+                  name: "Olivia Martin",
+                  email: "olivia.martin@email.com",
+                  amount: "+$1,999.00",
+                },
+                {
+                  name: "Jackson Lee",
+                  email: "jackson.lee@email.com",
+                  amount: "+$39.00",
+                },
+                {
+                  name: "Isabella Nguyen",
+                  email: "isabella.nguyen@email.com",
+                  amount: "+$299.00",
+                },
+                {
+                  name: "William Kim",
+                  email: "will@email.com",
+                  amount: "+$99.00",
+                },
+                {
+                  name: "Sofia Davis",
+                  email: "sofia.davis@email.com",
+                  amount: "+$39.00",
+                },
               ].map((item, i) => (
                 <div key={i} className="flex items-center">
                   <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center font-semibold mr-4">
                     {item.name[0]}
                   </div>
                   <div className="ml-4 space-y-1">
-                    <p className="text-sm font-medium leading-none">{item.name}</p>
-                    <p className="text-sm text-muted-foreground">{item.email}</p>
+                    <p className="text-sm font-medium leading-none">
+                      {item.name}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.email}
+                    </p>
                   </div>
                   <div className="ml-auto font-medium">{item.amount}</div>
                 </div>
